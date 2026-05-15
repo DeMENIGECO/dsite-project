@@ -172,7 +172,3 @@ Nel prossimo capitolo imparerai:
 - URL e routing
 - Views
 - Pythontag XML
-
----
-
-<a href="_top">Torna su</a>
