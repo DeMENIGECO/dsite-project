@@ -94,11 +94,15 @@ Apri `pages/homepage.xml` e scrivi:
 
 ```xml
 <expand file="diario_di_viaggio:base.xml" />
+
 <html-block>
+
 <h1>Benvenuto in Diario Di Viaggio!</h1>
+
 <p>
 Questo è il mio primo sito creato con DSite.
 </p>
+
 </html-block>
 ```
 
@@ -117,6 +121,7 @@ Ora apri `pages/base.xml` e scrivi:
 <add-base-classification />
 
 <html-block>
+
 <p>
 <b>Diario Di Viaggio</b> -
 <a href="diario_di_viaggio:home">Home</a>
@@ -125,6 +130,7 @@ Ora apri `pages/base.xml` e scrivi:
 <hr>
 
 <file-html />
+
 </html-block>
 ```
 
