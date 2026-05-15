@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>URL e Routing</title>
+
+<!-- Markdown -->
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+<!-- Highlight.js -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<style>
+:root{
+    --main:#40e0d0;
+    --dark:#2bbbad;
+    --light:#e8ffff;
+    --text:#183030;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:white;
+    color:var(--text);
+}
+
+/* HEADER */
+header{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:var(--main);
+    color:white;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 20px;
+}
+
+.logo{
+    font-size:26px;
+    font-weight:bold;
+}
+
+/* MENU DESKTOP */
+.desktop-menu{
+    display:flex;
+    gap:15px;
+}
+
+.desktop-menu a{
+    color:white;
+    text-decoration:none;
+    font-weight:bold;
+    padding:8px 12px;
+    border-radius:10px;
+}
+
+.desktop-menu a:hover{
+    background:rgba(255,255,255,0.2);
+}
+
+/* HAMBURGER */
+.hamburger{
+    display:none;
+    font-size:30px;
+    cursor:pointer;
+}
+
+/* MOBILE MENU */
+.mobile-menu{
+    display:none;
+    flex-direction:column;
+    background:var(--dark);
+}
+
+.mobile-menu a{
+    padding:12px;
+    color:white;
+    text-decoration:none;
+}
+
+/* MAIN */
+main{
+    max-width:1100px;
+    margin:auto;
+    padding:30px;
+}
+
+/* MARKDOWN */
+#markdown-content{
+    background:white;
+    padding:40px;
+    border-radius:20px;
+    box-shadow:0 0 20px rgba(0,0,0,0.08);
+}
+
+/* Markdown style */
+#markdown-content h1{font-size:40px;color:var(--dark)}
+#markdown-content h2{margin-top:30px;color:var(--dark)}
+#markdown-content p{line-height:1.7;margin:12px 0}
+#markdown-content img{max-width:100%;border-radius:12px}
+#markdown-content blockquote{
+    border-left:5px solid var(--main);
+    padding:10px;
+    background:#f4ffff;
+}
+
+/* CODE BLOCK */
+.code-wrapper{
+    position:relative;
+    margin:20px 0;
+}
+
+.copy-btn{
+    position:absolute;
+    top:10px;
+    right:10px;
+    background:var(--main);
+    border:none;
+    color:white;
+    padding:6px 10px;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+/* FOOTER */
+footer{
+    margin-top:40px;
+    background:var(--main);
+    color:white;
+    display:flex;
+    justify-content:space-between;
+    padding:20px;
+    flex-wrap:wrap;
+}
+
+select{
+    padding:8px;
+    border-radius:8px;
+    border:none;
+}
+
+/* RESPONSIVE */
+@media(max-width:800px){
+    .desktop-menu{display:none;}
+    .hamburger{display:block;}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">DSite</div>
+
+    <nav class="desktop-menu">
+        <a href="../index.html">Home</a>
+        <a href="index.html">Docs</a>
+        <a href="../faqs.html">FAQ</a>
+        <a href="https://github.com/DeMENIGECO/dsite">GitHub</a>
+    </nav>
+
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
+</header>
+
+<nav class="mobile-menu" id="mobileMenu">
+    <a href="../index.html">Home</a>
+        <a href="index.html">Docs</a>
+        <a href="../faqs.html">FAQ</a>
+        <a href="https://github.com/DeMENIGECO/dsite">GitHub</a>
+</nav>
+
+<main>
+    <div id="markdown-content">Caricamento...</div>
+</main>
+
+<footer>
+    <div>
+        🌍 Lingua:
+        <select id="lang">
+            <option value="it">Italiano</option>
+        </select>
+    </div>
+
+    <div>
+        🚀 Versione:
+        <select id="version">
+            <option value="1.0.0">1.0.0</option>
+        </select>
+    </div>
+</footer>
+
+<script>
+
+/* MENU MOBILE */
+function toggleMenu(){
+    const m = document.getElementById("mobileMenu");
+    m.style.display = (m.style.display === "flex") ? "none" : "flex";
+}
+
+/* LOAD MARKDOWN */
+fetch("md/url.md")
+.then(r => r.text())
+.then(md => {
+    const html = marked.parse(md);
+    const container = document.getElementById("markdown-content");
+
+    container.innerHTML = html;
+
+    // Highlight code
+    document.querySelectorAll('pre code').forEach((block) => {
+        hljs.highlightElement(block);
+    });
+
+    // Wrap code + add copy button
+    document.querySelectorAll("pre").forEach(pre => {
+
+        const wrapper = document.createElement("div");
+        wrapper.className = "code-wrapper";
+
+        const btn = document.createElement("button");
+        btn.className = "copy-btn";
+        btn.innerText = "📋";
+
+        btn.onclick = () => {
+            navigator.clipboard.writeText(pre.innerText);
+            btn.innerText = "✔";
+            setTimeout(() => btn.innerText = "📋", 1000);
+        };
+
+        pre.parentNode.insertBefore(wrapper, pre);
+        wrapper.appendChild(pre);
+        wrapper.appendChild(btn);
+    });
+
+})
+.catch(err => {
+    document.getElementById("markdown-content").innerHTML =
+        "<h2>Errore caricamento Markdown</h2>";
+});
+
+/* FOOTER URL CHANGE */
+function updateURL(){
+    const lang = document.getElementById("lang").value;
+    const ver = document.getElementById("version").value;
+
+    window.location.href = `/dsite-project/${lang}/${ver}/`;
+}
+
+document.getElementById("lang").addEventListener("change", updateURL);
+document.getElementById("version").addEventListener("change", updateURL);
+
+</script>
+
+</body>
+</html>
