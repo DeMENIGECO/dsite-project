@@ -172,7 +172,7 @@ travel = Travel.objects.get(id=1)
 Infine, per elimare:
 
 ```python
-travel.delete(id=1)
+travel.delete()
 ```
 
 ---
