@@ -533,7 +533,7 @@ sudo chmod +x dsite-admin.
 `dsite` e `dsite-admin` dovrebbe essere nella path di sistema se hai installato DSite tramite pip. Se non è nella path, fai questo:
 
 - **Su Windows:** vai in Start, cerca "Variabili" e apri "Modifica le variabili di ambiente relative all'utente" o simile. Poi, clicca sulla variabile **Path**, clicca "modifica" e aggiungi il percorso `C:\(Percorso di Python)\Scripts`
-- **Su MacOS/Linux:** vai nella cartella utente, apri il file `~/.bashsrc` (o se usi zsh `~/.zshrc`), e aggiungi la riga `/(Percorso di Python)/bin`
+- **Su MacOS/Linux:** vai nella cartella utente, apri il file `~/.bashrc` (o se usi zsh `~/.zshrc`), e aggiungi la riga `/(Percorso di Python)/bin`
   
 ---
 
