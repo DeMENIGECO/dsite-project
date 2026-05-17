@@ -518,13 +518,13 @@ Questo è dovuto al fatto che, nei sistemi basati su Unix, come OS X, un file de
 Esegui il comando 
 
 ```bash
-sudo chmod +x dsite`.
+sudo chmod +x dsite.
 ```
 
 e 
 
 ```bash
-sudo chmod +x dsite-admin`.
+sudo chmod +x dsite-admin.
 ```
 ---
 
