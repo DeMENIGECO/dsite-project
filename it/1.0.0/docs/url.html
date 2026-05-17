@@ -250,15 +250,31 @@ fetch("md/url.md")
 
 /* FOOTER URL CHANGE */
 function updateURL(){
-    const lang = document.getElementById("lang").value;
-    const ver = document.getElementById("version").value;
 
-    window.location.href = `/dsite-project/${lang}/${ver}/`;
+    const lang =
+        document.getElementById("lang").value;
+
+    const ver =
+        document.getElementById("version").value;
+
+    const base =
+        "/dsite-project";
+
+    const newURL =
+        `${base}/${lang}/${ver}/docs/url`;
+
+    console.log(newURL);
+
+    window.location.href = newURL;
 }
 
-document.getElementById("lang").addEventListener("change", updateURL);
-document.getElementById("version").addEventListener("change", updateURL);
+document
+.getElementById("lang")
+.addEventListener("change", updateURL);
 
+document
+.getElementById("version")
+.addEventListener("change", updateURL);
 </script>
 
 </body>
