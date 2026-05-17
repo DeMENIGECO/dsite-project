@@ -1,4 +1,4 @@
-# ❓ DSite FAQs
+# DSite FAQs
 
 Benvenuto nelle FAQ ufficiali di DSite!
 
@@ -6,7 +6,7 @@ Qui trovi le domande più frequenti sul framework.
 
 ---
 
-# 📦 Installazione
+# Installazione
 
 ## Come installo DSite?
 
@@ -29,7 +29,7 @@ dsite --version
 ## Come creo un progetto DSite?
 
 ```bash
-dsite createproject diario_di_viaggio
+dsite createproject nome_progetto
 ```
 
 ---
@@ -37,11 +37,11 @@ dsite createproject diario_di_viaggio
 ## Qual è la struttura iniziale di un progetto?
 
 ```text
-diario_di_viaggio/
+nome_progetto/
 │
 ├── manage.py
 │
-└── diario_di_viaggio/
+└── nome_progetto/
     ├── urls.py
     ├── views.py
     ├── adminsite.py
@@ -59,7 +59,7 @@ diario_di_viaggio/
 ## Come avvio il server?
 
 ```bash
-python manage.py runserver diario_di_viaggio
+python manage.py runserver nome_progetto
 ```
 
 ---
@@ -74,7 +74,7 @@ http://127.0.0.1:8000
 
 ---
 
-# 🌍 URL e Routing
+# URL e Routing
 
 ## Dove si gestiscono gli URL?
 
@@ -129,7 +129,7 @@ La funzione `render()`:
 
 ---
 
-# 📄 DSite Pages
+# DSite Pages
 
 ## Dove si trovano le pagine XML?
 
@@ -147,7 +147,7 @@ pages/
 <expand file="diario_di_viaggio:base.xml" />
 
 <html-block>
-<h1>Benvenuto in Diario Di Viaggio!</h1>
+<h1>Benvenuto!</h1>
 
 <p>
 Questo è il mio primo sito creato con DSite.
@@ -163,7 +163,7 @@ Questo è il mio primo sito creato con DSite.
 
 ---
 
-# 🧩 Expand System
+# Expand System
 
 ## Cos’è `<expand />`?
 
@@ -205,7 +205,7 @@ Serve per creare:
 
 <html-block>
 <p>
-<b>Diario Di Viaggio</b> -
+<b>DSite</b> -
 <a href="diario_di_viaggio:home">Home</a>
 </p>
 
@@ -217,7 +217,7 @@ Serve per creare:
 
 ---
 
-# 🐍 PythonTag XML
+# PythonTag XML
 
 ## Cos’è `<pyfunct>`?
 
@@ -284,7 +284,7 @@ os.remove("file_importante.txt")
 
 ---
 
-# 📝 Forms
+# Forms
 
 ## Dove si creano i Forms?
 
@@ -349,7 +349,7 @@ Serve a proteggere il database e controllare i permessi.
 
 ---
 
-# 🗄️ Models e Database
+# Models e Database
 
 ## Dove si creano i Models?
 
@@ -422,12 +422,12 @@ DSite utilizza un ORM (Object Relational Mapper).
 
 ---
 
-# 🔄 Migrazioni
+# Migrazioni
 
 ## Come creo una migrazione?
 
 ```bash
-python manage.py makemigrations diario_di_viaggio
+python manage.py makemigrations nome_popgetto
 ```
 
 ---
@@ -435,12 +435,12 @@ python manage.py makemigrations diario_di_viaggio
 ## Come applico le migrazioni?
 
 ```bash
-python manage.py migrate diario_di_viaggio
+python manage.py migrate nome_progetto
 ```
 
 ---
 
-# 🛠️ AdminSite
+# AdminSite
 
 ## Cos’è AdminSite?
 
@@ -488,7 +488,7 @@ http://127.0.0.1:8000/admin
 
 ---
 
-# 🚀 Generale
+# Generale
 
 ## DSite è open source?
 
@@ -509,6 +509,34 @@ Sì!
 
 ---
 
-# ❤️ Fine
+# Altro
+
+## Perché MacOS mi dá problemi di permessi ai comandi `dsite` e `dsite-admin`?
+
+Se stai usando Mac OS X, puoi ricevere messaggio "permesso negato" quando tenti di usare `dsite` e `dsite-admin`. 
+Questo è dovuto al fatto che, nei sistemi basati su Unix, come OS X, un file deve essere marcato come "eseguibile" prima di poter essere usato come programma. Per fare ciò, apri `Terminal.app` e naviga (usando il comando `cd`) fino alla directory dove è installato `dsite` e `dsite-admin`.
+Esegui il comando 
+
+```bash
+sudo chmod +x dsite`.
+```
+
+e 
+
+```bash
+sudo chmod +x dsite-admin`.
+```
+---
+
+## Non trova i comandi `dsite` e `dsite-admin`, cosa devo fare?
+
+`dsite` e `dsite-admin` dovrebbe essere nella path di sistema se hai installato DSite tramite pip. Se non è nella path, fai questo:
+
+- **Su Windows:** vai in Start, cerca "Variabili" e apri "Modifica le variabili di ambiente relative all'utente" o simile. Poi, clicca sulla variabile **Path**, clicca "modifica" e aggiungi il percorso `C:\(Percorso di Python)\Scripts`
+- **Su MacOS/Linux:** vai nella cartella utente, apri il file `.~bashsrc` o simile, e aggiungi la riga `/(Percorso di Python)/bin`
+  
+---
+
+# Fine
 
 Grazie per usare DSite 🚀
