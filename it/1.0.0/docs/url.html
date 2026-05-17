@@ -186,14 +186,14 @@ select{
 <footer>
     <div>
         🌍 Lingua:
-        <select id="lang">
+        <select id="lang" onchange="updateURL()">>
             <option value="it">Italiano</option>
         </select>
     </div>
 
     <div>
         🚀 Versione:
-        <select id="version">
+        <select id="version" onchange="updateURL()">>
             <option value="1.0.0">1.0.0</option>
         </select>
     </div>
@@ -263,18 +263,8 @@ function updateURL(){
     const newURL =
         `${base}/${lang}/${ver}/docs/url`;
 
-    console.log(newURL);
-
     window.location.href = newURL;
 }
-
-document
-.getElementById("lang")
-.addEventListener("change", updateURL);
-
-document
-.getElementById("version")
-.addEventListener("change", updateURL);
 </script>
 
 </body>
