@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FAQs - DSite</title>
+<title>FAQs</title>
 
 <!-- Markdown -->
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
@@ -132,27 +132,50 @@ main{
     cursor:pointer;
 }
 
+/* RESPONSIVE */
+@media(max-width:800px){
+    .desktop-menu{display:none;}
+    .hamburger{display:block;}
+}
+
 /* FOOTER */
-footer{
+    footer.footer{
     margin-top:40px;
     background:var(--main);
     color:white;
     display:flex;
     justify-content:space-between;
-    padding:20px;
+    gap:20px;
+    padding:25px;
     flex-wrap:wrap;
 }
 
-select{
-    padding:8px;
-    border-radius:8px;
-    border:none;
+.footer-left,
+.footer-right{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
 }
 
-/* RESPONSIVE */
-@media(max-width:800px){
-    .desktop-menu{display:none;}
-    .hamburger{display:block;}
+.footer-right div{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+/* BOTTONI FOOTER (nuovi, NON copy-btn) */
+.footer button{
+    padding:6px 12px;
+    border:none;
+    border-radius:8px;
+    background:white;
+    color:var(--dark);
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.footer button:hover{
+    opacity:0.8;
 }
 </style>
 </head>
@@ -183,22 +206,26 @@ select{
     <div id="markdown-content">Caricamento...</div>
 </main>
 
-<footer>
-    <div>
-        🌍 Lingua:
-        <select id="lang" onchange="updateURL()">>
-            <option value="it">Italiano</option>
-        </select>
+<footer class="footer">
+    <div class="footer-left">
+        <h3>DSite</h3>
+        <p>Il progetto Python per costruire app con Python e XML.</p>
     </div>
 
-    <div>
-        🚀 Versione:
-        <select id="version" onchange="updateURL()">>
-            <option value="1.0.0">1.0.0</option>
-        </select>
+    <div class="footer-right">
+        <div>
+            <b>Lingua:</b>
+            <button onclick="window.location.href='/dsite-project/it/1.0.0/faqs'">Italiano</button>
+        </div>
+
+        <div>
+            <b>Versione:</b>
+            <button onclick="window.location.href='/dsite-project/it/1.0.0/faqs'">1.0.0</button>
+        </div>
+
+        <em>(Italiano - v1.0.0)</em>
     </div>
 </footer>
-
 <script>
 
 /* MENU MOBILE */
@@ -261,11 +288,10 @@ function updateURL(){
         "/dsite-project";
 
     const newURL =
-        `${base}/${lang}/${ver}/faqs`;
+        `${base}/${lang}/${ver}/`;
 
     window.location.href = newURL;
 }
-
 
 </script>
 
