@@ -535,7 +535,12 @@ sudo chmod +x dsite-admin
 - **Su Windows:** vai in Start, cerca "Variabili" e apri "Modifica le variabili di ambiente relative all'utente" o simile. Poi, clicca sulla variabile **Path**, clicca "modifica" e aggiungi il percorso `C:\(Percorso di Python)\Scripts`
 - **Su MacOS/Linux:** vai nella cartella utente, apri il file `~/.bashrc` (o se usi zsh `~/.zshrc`), e aggiungi la riga `export PATH="$PATH:/(Percorso di Python)/bin`
 - **Se non vuoi modificare il PATH:** Usa i comandi equivalenti `python -m dsite.cli` per `dsite`, `python -m dsite.admin_cli` per `dsite-admin`
-  
+
+---
+
+## Non trovo risposta alle mie domande. Cosa devo fare
+Se non trova risposta alle sue domande, compili il [Form di assistenza](https://forms.gle/jKukCSMzPgCELgUf7)
+
 ---
 
 # Fine
